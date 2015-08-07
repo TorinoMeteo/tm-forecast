@@ -5,6 +5,8 @@ La libreria consuma le nuove API REST di TorinoMeteo (ancora in una versione bet
 
 La libreria permette di renderizzare codice html nel posto desiderato all'interno del documento. La nuova section inclusa nel documento può essere stilizzata a piacere agendo sulle classi css utilizzate. Se si desidera avere un controllo fine della visualizzazione dei dati è consigliabile consumare direttamente le API per ottenere oggetti JSON manipolabili a piacere.
 
+[Demo](http://codepen.io/abidibo/pen/EjrzMb)
+
 ## Utilizzo
 La libreria necessita jquery, versione 1.x.
 
@@ -19,9 +21,15 @@ Inserire quindi all'interno del documento nel punto desiderato uno dei tag suppo
 
 ### tmforecast
 
-Previsione che comprende un andamento generale più le singoli previsioni per i 3 giorni a venire
+Ultimo bollettino emesso che comprende un andamento generale più le singoli previsioni per i 3 giorni a venire
 
-    <tmforecast tm-date="last"></tmforecast>
+    <tmforecast></tmforecast>
+
+### tmdayforecast
+
+Previsione completa per il giorno selezionato tramite attributo tm-date. La data deve essere nel formato YYYY-MM-DD.
+
+    <tmdayforecast tm-date="2015-08-07"></tmdayforecast>
 
 ## TODO
 

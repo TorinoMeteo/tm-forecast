@@ -1,0 +1,36 @@
+/**
+ * tmforecast
+ */
+.tmforecast {
+    width: 600px;
+    border: 1px solid #ccc;
+    background: #eee;
+    padding: 10px;
+    font-size: 14px;
+    line-height: 20px;
+}
+    .tmforecast h1 {
+        font-size: 20px;
+    }
+    .tmforecast .tmforecast-day {
+        border-top: 1px solid #fff;
+        margin-top: 10px;
+    }
+    .tmforecast .tmforecast-day > img {
+        max-width: 50%;
+    }
+
+/**
+ * tmdayforecast
+ */
+body > .tmforecast-day {
+    width: 600px;
+    border: 1px solid #ccc;
+    background: #f1f1f1;
+    padding: 10px;
+    font-size: 14px;
+    line-height: 20px;
+}
+    body > .tmforecast-day > img {
+        max-width: 50%;
+    }
