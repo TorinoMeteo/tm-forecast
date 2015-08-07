@@ -71,7 +71,8 @@
             function dayForecastElement(data) {
                 var date = new Date(data.date);
                 var formatted_date = date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear();
-                var title = $('<h2/>').text('{0} - attendibilità {1}%'.f(formatted_date, data.reliability));
+                var title = $('<h2/>').text('{0}'.f(formatted_date));
+                var reliability = $('<p/>', {'class': 'reliability'}).text('attendibilità {0}%'.f(data.reliability));
                 var img12 = $('<img/>', { src: IMG_BASE_URL + data.image12 });
                 var img24 = $('<img/>', { src: IMG_BASE_URL + data.image24 });
                 var weather = [
@@ -88,6 +89,7 @@
                 ];
                 var subsection = $('<div/>', { 'class': 'tmforecast-day' }).append(
                     title,
+                    reliability,
                     img12,
                     img24,
                     weather,
