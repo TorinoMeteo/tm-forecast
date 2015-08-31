@@ -154,16 +154,16 @@
         var img12 = $('<img/>', { src: utils.absUrl(data.image12) });
         var img24 = $('<img/>', { src: utils.absUrl(data.image24) });
         var weather = [
-            $('<h' + (title_level + 1) + '/>').text('Tempo previsto'),
-            $('<div/>').html(data.text)
+            $('<h' + (title_level + 1) + '/>', {'class': 'text'}).text('Tempo previsto'),
+            $('<div/>', {'class': 'text'}).html(data.text)
         ];
         var temperature = [
-            $('<h' + (title_level + 1) + '/>').text('Temperature'),
-            $('<div/>').html(data.temperatures)
+            $('<h' + (title_level + 1) + '/>', {'class': 'temperature'}).text('Temperature'),
+            $('<div/>', {'class': 'temperature'}).html(data.temperatures)
         ];
         var wind = [
-            $('<h' + (title_level + 1) + '/>').text('Venti'),
-            $('<div/>').html(data.winds)
+            $('<h' + (title_level + 1) + '/>', {'class': 'wind'}).text('Venti'),
+            $('<div/>', {'class': 'wind'}).html(data.winds)
         ];
         var subsection = $('<' + container_tag + '/>', { 'class': 'tmforecast-day' }).append(
             title,
