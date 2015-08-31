@@ -2,6 +2,33 @@
 
 (function($) {
 
+    ////////// Datetime Locales
+
+    var days_dict = {
+        'mon': 'lunedì',
+        'tue': 'martedì',
+        'wed': 'mercoledì',
+        'thu': 'giovedì',
+        'fri': 'venerdì',
+        'sat': 'sabato',
+        'sun': 'domenica'
+    };
+
+    var months_dict = {
+        1: 'gennaio',
+        2: 'febbraio',
+        3: 'marzo',
+        4: 'aprile',
+        5: 'maggio',
+        6: 'giugno',
+        7: 'luglio',
+        8: 'agosto',
+        9: 'settembre',
+        10: 'ottobre',
+        11: 'novembre',
+        12: 'dicembre'
+    };
+
     ////////// Utils
 
     String.prototype.format = String.prototype.f = function() {
@@ -17,6 +44,18 @@
     var utils = {
         absUrl: function(url) {
             return /http/.test(url) ? url : IMG_BASE_URL + url;
+        },
+        /**
+         * Returns a string representation of date
+         * @param {Date} date
+         * @return {String}
+         */
+        toDateString: function(date, opts) {
+            var string_date = date.toDateString();
+            var day_literal = string_date.replace(/ .*$/, '').toLowerCase();
+            return opts.show_year
+                ? '{0} {1} {2} {3}'.f(days_dict[day_literal], date.getDate(), months_dict[date.getMonth() + 1], date.getFullYear())
+                : '{0} {1} {2}'.f(days_dict[day_literal], date.getDate(), months_dict[date.getMonth() + 1])
         }
     };
 
@@ -59,8 +98,8 @@
 
         $.getJSON(API_BASE_URL + path, function(data) {
             var date = new Date(data.date);
-            var formatted_date = date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear();
-            var title = $('<h1/>').text('Bollettino emesso il {0}'.f(formatted_date));
+            var formatted_date = utils.toDateString(date, { show_year: false });
+            var title = $('<h1/>').text('Bollettino emesso {0}'.f(formatted_date));
             var text = $('<div/>').html(data.pattern);
 
             var subsections = [];
@@ -109,9 +148,9 @@
         var title_tpl = opts.title_tpl;
 
         var date = new Date(data.date);
-        var formatted_date = date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear();
+        var formatted_date = utils.toDateString(date, { show_year: false });
         var title = $('<h' + title_level + '/>').text(title_tpl.f(formatted_date));
-        var reliability = $('<p/>', {'class': 'reliability'}).html('<strong>Attendibilità</strong>: {0}%'.f(data.reliability));
+        var reliability = $('<p/>', {'class': 'reliability reliability-' + data.reliability}).html('<strong>Attendibilità</strong>: {0}%'.f(data.reliability));
         var img12 = $('<img/>', { src: utils.absUrl(data.image12) });
         var img24 = $('<img/>', { src: utils.absUrl(data.image24) });
         var weather = [
