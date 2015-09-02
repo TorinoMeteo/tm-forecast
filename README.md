@@ -17,6 +17,11 @@ Includere la libreria jquery e tmforecast:
 
 Inserire quindi all'interno del documento nel punto desiderato uno dei tag supportati dalla libreria.
 
+Al momento è stata sviluppata anche la libreria utilizzabile con Mootools >= 1.4, ma non sarà supportata in futuro, in questo caso:
+
+        <script src="https://ajax.googleapis.com/ajax/libs/mootools/1.5.1/mootools-yui-compressed.js"></script>
+        <script src="https://raw.githubusercontent.com/TorinoMeteo/tm-forecast/master/js/tmforecast-mootools.js"></script>
+
 ## Tag supportati
 
 ### tmforecast
