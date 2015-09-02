@@ -151,8 +151,12 @@
         var formatted_date = utils.toDateString(date, { show_year: false });
         var title = $('<h' + title_level + '/>').text(title_tpl.f(formatted_date));
         var reliability = $('<p/>', {'class': 'reliability reliability-' + data.reliability}).html('<strong>Attendibilità</strong>: {0}%'.f(data.reliability));
-        var img12 = $('<img/>', { src: utils.absUrl(data.image12) });
-        var img24 = $('<img/>', { src: utils.absUrl(data.image24) });
+        var img12 = $('<figure/>', {'class': 'img12'}).append(
+                $('<img/>', { src: utils.absUrl(data.image12) }),
+                $('<figcaption/>').text('00:00 - 12:00'));
+        var img24 = $('<figure/>', {'class': 'img24'}).append(
+                $('<img/>', { 'class': 'img24', src: utils.absUrl(data.image24) }),
+                $('<figcaption/>').text('12:00 - 24:00'));
         var weather = [
             $('<h' + (title_level + 1) + '/>', {'class': 'text'}).text('Tempo previsto'),
             $('<div/>', {'class': 'text'}).html(data.text)

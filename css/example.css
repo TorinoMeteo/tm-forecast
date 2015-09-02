@@ -16,9 +16,23 @@
         border-top: 1px solid #fff;
         margin-top: 10px;
     }
-    .tmforecast .tmforecast-day > img {
-        max-width: 50%;
+    .tmforecast .tmforecast-day figure {
+        width: 50%;
+        margin: 10px 0;
+        float: left;
     }
+        .tmforecast .tmforecast-day figure > img {
+            max-width: 100%;
+        }
+
+    .tmforecast figcaption {
+        display: block;
+        text-align: center;
+    }
+    .tmforecast .tmforecast-day figure + figure + * {
+        clear: both;
+    }
+
 
 /**
  * tmdayforecast
