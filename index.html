@@ -5,6 +5,11 @@
         <title>tmforecast example</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="js/tmforecast.js"></script>
+        <script>
+            var oncomplete = function(section) {
+                console.log(section);
+            }
+        </script>
         <link rel="stylesheet" href="css/example.css" />
     </head>
     <body>
@@ -17,10 +22,10 @@
         <hr />
         <h2><a name="tmforecast">tmforecast</a></h2>
         <p>Tag per l'inclusione dell'ultimo bollettino completo</p>
-        <tmforecast></tmforecast>
+        <tmforecast tm-oncomplete="oncomplete"></tmforecast>
         <hr />
         <h2><a name="tmdayforecast">tmdayforecast</a></h2>
-        <p>Tag per l'inclusione della previsione di un singolo giorno</p>
-        <tmdayforecast tm-date="2015-08-07"></tmforecast>
+        <p>Tag per l'inclusione della previsione di un singolo giorno (modificare l'attributo inserendo una data presente nell bollettino completo)</p>
+        <tmdayforecast tm-date="2015-09-04"></tmforecast>
     </body>
 </html>

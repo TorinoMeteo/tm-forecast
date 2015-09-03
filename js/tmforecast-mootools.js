@@ -56,6 +56,20 @@
             return opts.show_year
                 ? '{0} {1} {2} {3}'.f(days_dict[day_literal], date.getDate(), months_dict[date.getMonth() + 1], date.getFullYear())
                 : '{0} {1} {2}'.f(days_dict[day_literal], date.getDate(), months_dict[date.getMonth() + 1])
+        },
+        /**
+         * Calls a [namespaced] function by name
+         * @param {String} name
+         * @param {String} context
+         */
+        execFunctionByName: function(name, context /*, args */) {
+            var args = [].slice.call(arguments).splice(2);
+            var namespaces = name.split(".");
+            var func = namespaces.pop();
+            for(var i = 0; i < namespaces.length; i++) {
+                context = context[namespaces[i]];
+            }
+            return context[func].apply(this, args);
         }
     };
 
@@ -94,6 +108,7 @@
      */
     function renderTmforecast(elem) {
 
+        var callback = $(elem).getProperty('tm-oncomplete');
         var path = '/forecast/get-last/';
 
         var request = new Request.JSON({ 
@@ -120,6 +135,9 @@
                     subsections);
 
                 section.replaces($(elem));
+                if(callback) {
+                    utils.execFunctionByName(callback, window, section);
+                }
             }
         });
         delete request.headers['X-Requested-With'];
@@ -134,6 +152,12 @@
     function renderTmdayforecast(elem) {
 
         var date = $(elem).getProperty('tm-date');
+        if(!date) {
+            console.log('Error: you must provide a valid tm-date attribute for the tag tmdayforecast.');
+            return;
+        }
+
+        var callback = $(elem).getProperty('tm-oncomplete');
         var path = '/forecast/day/{0}/'.f(date);
 
         var request = new Request.JSON({
@@ -146,6 +170,9 @@
                     title_tpl: 'Previsioni per il giorno {0}'
                 });
                 section.replaces($(elem));
+                if(callback) {
+                    utils.execFunctionByName(callback, window, section);
+                }
             }
         });
         delete request.headers['X-Requested-With'];

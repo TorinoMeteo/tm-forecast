@@ -42,12 +42,19 @@
     };
 
     var utils = {
+        /**
+         * Returns the image absolute url
+         * @param {String} url
+         * @return {String} absolute url
+         */
         absUrl: function(url) {
             return /http/.test(url) ? url : IMG_BASE_URL + url;
         },
         /**
          * Returns a string representation of date
          * @param {Date} date
+         * @param {Object} opts
+         * @param {Boolean} opts.show_year
          * @return {String}
          */
         toDateString: function(date, opts) {
@@ -56,6 +63,28 @@
             return opts.show_year
                 ? '{0} {1} {2} {3}'.f(days_dict[day_literal], date.getDate(), months_dict[date.getMonth() + 1], date.getFullYear())
                 : '{0} {1} {2}'.f(days_dict[day_literal], date.getDate(), months_dict[date.getMonth() + 1])
+        },
+        /**
+         * Capitalizes the first letter
+         * @param {String} str
+         * @return {String}
+         */
+        ucfirst: function(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        },
+        /**
+         * Calls a [namespaced] function by name
+         * @param {String} name
+         * @param {String} context
+         */
+        execFunctionByName: function(name, context /*, args */) {
+            var args = [].slice.call(arguments).splice(2);
+            var namespaces = name.split(".");
+            var func = namespaces.pop();
+            for(var i = 0; i < namespaces.length; i++) {
+                context = context[namespaces[i]];
+            }
+            return context[func].apply(this, args);
         }
     };
 
@@ -94,6 +123,7 @@
      */
     function renderTmforecast(elem) {
 
+        var callback = $(elem).attr('tm-oncomplete');
         var path = '/forecast/get-last/';
 
         $.getJSON(API_BASE_URL + path, function(data) {
@@ -116,6 +146,9 @@
                 text,
                 subsections);
             $(elem).replaceWith(section);
+            if(callback) {
+                utils.execFunctionByName(callback, window, section);
+            }
 
         })
     }
@@ -127,6 +160,12 @@
     function renderTmdayforecast(elem) {
 
         var date = $(elem).attr('tm-date');
+        if(!date) {
+            console.log('Error: you must provide a valid tm-date attribute for the tag tmdayforecast.');
+            return;
+        }
+
+        var callback = $(elem).attr('tm-oncomplete');
         var path = '/forecast/day/{0}/'.f(date);
 
         $.getJSON(API_BASE_URL + path, function(data) {
@@ -136,6 +175,9 @@
                 title_tpl: 'Previsioni per il giorno {0}'
             });
             $(elem).replaceWith(section);
+            if(callback) {
+                utils.execFunctionByName(callback, window, section);
+            }
         })
     }
 

@@ -16,6 +16,9 @@
         border-top: 1px solid #fff;
         margin-top: 10px;
     }
+    .tmforecast .tmforecast-day h2 {
+        text-transform: capitalize;
+    }
     .tmforecast .tmforecast-day figure {
         width: 50%;
         margin: 10px 0;
@@ -45,6 +48,16 @@ body > .tmforecast-day {
     font-size: 14px;
     line-height: 20px;
 }
-    body > .tmforecast-day > img {
-        max-width: 50%;
+    body > .tmforecast-day figure {
+        width: 50%;
+        margin: 10px 0;
+        float: left;
+    }
+        .tmforecast-day figure > img {
+            max-width: 100%;
+        }
+
+    .tmforecast-day figcaption {
+        display: block;
+        text-align: center;
     }

@@ -28,7 +28,15 @@ Al momento è stata sviluppata anche la libreria utilizzabile con Mootools >= 1.
 
 Ultimo bollettino emesso che comprende un andamento generale più le singoli previsioni per i 3 giorni a venire
 
-    <tmforecast></tmforecast>
+    <tmforecast tm-oncomplete="my.object.method"></tmforecast>
+
+#### Attributi
+
+    *tm-oncomplete* (opzionale)
+
+    namespace completo di una funzione da chiamare a renderizzazione avvenuta. 
+    La funzione riceverà come argomento l'oggetto 'section' contenitore di tutto l'html generato. 
+    Utilizzate questa funzionalità se volete ulteriormente affinare l'html, aggiungendo interattività (lightbox su immagini) o risistemando i contenuti etc..
 
 ### tmdayforecast
 
@@ -36,9 +44,15 @@ Previsione completa per il giorno selezionato tramite attributo tm-date. La data
 
     <tmdayforecast tm-date="2015-08-07"></tmdayforecast>
 
-## TODO
+#### Attributi
 
-- supportare altri tipi di tag, per le previsioni singole
-- aggiungere attributi ed opzioni ad ogni tag
-- bootstrap?
+    *tm-date*
+
+    data per la quale si desidera ricevere la previsione, deve essere specificata nel formato YYYY-MM-DD.
+
+    *tm-oncomplete* (opzionale)
+
+    namespace completo di una funzione da chiamare a renderizzazione avvenuta. 
+    La funzione riceverà come argomento l'oggetto 'section' contenitore di tutto l'html generato. 
+    Utilizzate questa funzionalità se volete ulteriormente affinare l'html, aggiungendo interattività (lightbox su immagini) o risistemando i contenuti etc..
 
