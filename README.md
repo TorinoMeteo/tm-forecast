@@ -32,11 +32,11 @@ Ultimo bollettino emesso che comprende un andamento generale più le singoli pre
 
 #### Attributi
 
-    *tm-oncomplete* (opzionale)
+__tm-oncomplete__ (opzionale)
 
-    namespace completo di una funzione da chiamare a renderizzazione avvenuta. 
-    La funzione riceverà come argomento l'oggetto 'section' contenitore di tutto l'html generato. 
-    Utilizzate questa funzionalità se volete ulteriormente affinare l'html, aggiungendo interattività (lightbox su immagini) o risistemando i contenuti etc..
+Namespace completo di una funzione da chiamare a renderizzazione avvenuta. 
+La funzione riceverà come argomento l'oggetto 'section' contenitore di tutto l'html generato. 
+Utilizzate questa funzionalità se volete ulteriormente affinare l'html, aggiungendo interattività (lightbox su immagini) o risistemando i contenuti etc..
 
 ### tmdayforecast
 
@@ -46,13 +46,13 @@ Previsione completa per il giorno selezionato tramite attributo tm-date. La data
 
 #### Attributi
 
-    *tm-date*
+__tm-date__
 
-    data per la quale si desidera ricevere la previsione, deve essere specificata nel formato YYYY-MM-DD.
+Data per la quale si desidera ricevere la previsione, deve essere specificata nel formato YYYY-MM-DD.
 
-    *tm-oncomplete* (opzionale)
+__tm-oncomplete__ (opzionale)
 
-    namespace completo di una funzione da chiamare a renderizzazione avvenuta. 
-    La funzione riceverà come argomento l'oggetto 'section' contenitore di tutto l'html generato. 
-    Utilizzate questa funzionalità se volete ulteriormente affinare l'html, aggiungendo interattività (lightbox su immagini) o risistemando i contenuti etc..
+Namespace completo di una funzione da chiamare a renderizzazione avvenuta. 
+La funzione riceverà come argomento l'oggetto 'section' contenitore di tutto l'html generato. 
+Utilizzate questa funzionalità se volete ulteriormente affinare l'html, aggiungendo interattività (lightbox su immagini) o risistemando i contenuti etc..
 
