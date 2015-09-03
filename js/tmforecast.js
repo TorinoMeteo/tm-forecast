@@ -90,8 +90,8 @@
 
     ////////// Conf and Parse
 
-    const API_BASE_URL = 'http://new.torinometeo.org/api/v1';
-    const IMG_BASE_URL = 'http://new.torinometeo.org';
+    var API_BASE_URL = 'http://new.torinometeo.org/api/v1';
+    var IMG_BASE_URL = 'http://new.torinometeo.org';
     var tags = {
         'tmforecast': renderTmforecast,
         'tmdayforecast': renderTmdayforecast
