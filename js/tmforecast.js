@@ -1,3 +1,14 @@
+/**
+ * tmforecast.js
+ * Library which consumes the TorinoMeteo forecast API and let's insert TorinoMeteo forecast in external
+ * sites using a simple custom tag.
+ * @author abidibo <abidibo@gmail.com>
+ * @license MIT (https://opensource.org/licenses/MIT)
+ * @copyright 2015 TorinoMeteo
+ * @requires jquery >= 1.3
+ * @repository https://github.com/TorinoMeteo/tm-forecast
+ *
+ */
 "use strict";
 
 (function($) {
