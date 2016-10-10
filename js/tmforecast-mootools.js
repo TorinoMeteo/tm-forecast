@@ -86,8 +86,8 @@
 
     ////////// Conf and Parse
 
-    var API_BASE_URL = 'http://ws.torinometeo.org/api/v1';
-    var IMG_BASE_URL = 'http://ws.torinometeo.org';
+    var API_BASE_URL = 'https://ws.torinometeo.org/api/v1';
+    var IMG_BASE_URL = 'https://ws.torinometeo.org';
     var tags = {
         'tmforecast': renderTmforecast,
         'tmdayforecast': renderTmdayforecast
